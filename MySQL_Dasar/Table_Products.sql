@@ -71,3 +71,6 @@ WHERE id = "P0005";
 UPDATE products
 SET price = price + 5000
 WHERE id = "P0005";
+
+DELETE FROM products
+WHERE id = 'P0009'
