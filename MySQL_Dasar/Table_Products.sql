@@ -41,3 +41,33 @@ SELECT * FROM products WHERE price = 15000;
 SELECT * FROM products WHERE id = 'P0001';
 
 SELECT * FROM products WHERE name = 'Mie Ayam Bakso Original';
+
+DESCRIBE products;
+
+ALTER TABLE products
+	ADD COLUMN category ENUM ('Makanan', 'Minuman', 'Lain-lain') 
+    AFTER name;
+    
+SELECT * FROM products;
+
+UPDATE products
+SET category = 'Makanan'
+WHERE id = "P0001";
+
+UPDATE products
+SET category = 'Makanan',
+	description = 'Mie Ayam + Ceker'
+WHERE id = "P0003";
+
+UPDATE products
+SET category = 'Makanan'
+WHERE id = "P0002";
+
+UPDATE products
+SET category = 'Makanan',
+	description = 'Mie Ayam Tanpa Kuah'
+WHERE id = "P0005";
+
+UPDATE products
+SET price = price + 5000
+WHERE id = "P0005";
