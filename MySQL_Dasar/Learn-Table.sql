@@ -1,0 +1,61 @@
+SHOW ENGINES;
+
+SHOW TABLES;
+
+CREATE TABLE barang
+(
+	id INT NOT NULL,
+    nama VARCHAR(100) NOT NULL,
+    harga INT NOT NULL DEFAULT 0,
+    jumlah INT NOT NULL DEFAULT 0,
+    waktu_dibuat TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+
+DESC barang;
+
+SHOW CREATE TABLE barang;
+
+ALTER TABLE barang
+	ADD COLUMN nama_column TEXT,
+    DROP COLUMN nama,
+    RENAME COLUMN nama TO nama_baru,
+    MODIFY nama VARCHAR(100) AFTER jumlah,
+    MODIFY nama VARCHAR(100) FIRST;
+    
+ALTER TABLE barang
+	ADD COLUMN deksripsi TEXT;
+    
+ALTER TABLE barang
+	ADD COLUMN salah TEXT;
+    
+ALTER TABLE barang
+	DROP COLUMN salah;
+    
+ALTER TABLE barang
+	MODIFY nama VARCHAR(200) AFTER deksripsi;
+    
+ALTER TABLE barang 
+	MODIFY nama VARCHAR(200) FIRST;
+    
+ALTER TABLE barang
+	MODIFY id INT NOT NULL;
+    
+ALTER TABLE barang
+	MODIFY nama VARCHAR(200) NOT NULL;
+    
+ALTER TABLE barang
+	MODIFY harga INT NOT NULL DEFAULT 0,
+    MODIFY jumlah INT NOT NULL DEFAULT 0;
+    
+ALTER TABLE barang
+	ADD waktu_dibuat TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+INSERT INTO barang (id,nama) VALUES (1, 'Apel');
+
+SELECT * FROM barang;
+
+TRUNCATE barang;
+
+SHOW TABLES;
+
+DROP TABLE barang;
