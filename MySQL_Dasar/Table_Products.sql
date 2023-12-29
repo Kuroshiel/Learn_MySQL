@@ -28,3 +28,16 @@ Values ('P0003', 'Mie Ayam Ceker', 20000,100),
 SELECT * FROM products;
 
 SELECT id, name, price, quantity FROM products;
+
+ALTER TABLE products
+	ADD PRIMARY KEY (id);
+    
+DESC products;
+
+SELECT * FROM products WHERE quantity = 100;
+
+SELECT * FROM products WHERE price = 15000;
+
+SELECT * FROM products WHERE id = 'P0001';
+
+SELECT * FROM products WHERE name = 'Mie Ayam Bakso Original';
