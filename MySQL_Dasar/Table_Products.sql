@@ -178,3 +178,11 @@ SELECT id,
 	Upper(name) as 'Name Upper',
     LENGTH(name) as 'Name Lenght'
 FROM products;
+
+SELECT id, create_at,
+	   EXTRACT(YEAR FROM create_at) AS 'YEAR',
+	   EXTRACT(MONTH FROM create_at) AS 'MONTH'
+FROM products;
+
+SELECT id, create_at, YEAR(create_at), MONTH(create_at)
+FROM products;
