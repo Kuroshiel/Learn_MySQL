@@ -155,3 +155,6 @@ SELECT * FROM products ORDER BY id LIMIT 5, 5;
 
 SELECT * FROM products ORDER BY id LIMIT 10, 5;
 
+SELECT category FROM products;
+
+SELECT DISTINCT category FROM products;
