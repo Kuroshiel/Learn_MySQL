@@ -143,3 +143,15 @@ SELECT * FROM products WHERE category NOT IN ('Makanan', 'Minuman');
 SELECT id, category, name FROM products ORDER BY category;
 
 SELECT id, category, name, price FROM products ORDER BY category ASC, price  DESC;
+
+SELECT * FROM products WHERE price > 0
+ORDER BY price LIMIT 2;
+
+SELECT * FROM products ORDER BY id LIMIT 5;
+
+SELECT * FROM products ORDER BY id LIMIT 0, 5;
+
+SELECT * FROM products ORDER BY id LIMIT 5, 5;
+
+SELECT * FROM products ORDER BY id LIMIT 10, 5;
+
