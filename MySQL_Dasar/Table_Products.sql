@@ -5,8 +5,9 @@ CREATE TABLE products(
     price INT UNSIGNED NOT NULL,
     quantity INT UNSIGNED NOT NULL DEFAULT 0,
     create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id).
-    CONSTRAINT price_check CHECK (price >= 1000)
+    PRIMARY KEY (id),
+    CONSTRAINT price_check CHECK (price >= 1000),
+    FULLTEXT products_search (name, description)
 ) Engine = InnoDB;
 
 SHOW TABLES;
@@ -264,3 +265,24 @@ WHERE
 
 ALTER TABLE products
 DROP CONSTRAINT price_check;
+
+ALTER TABLE products
+ADD FULLTEXT products_search (name, description);
+
+ALTER TABLE products
+DROP INDEX products_search;
+
+SHOW CREATE TABLE products;
+
+SELECT * FROM products;
+
+SELECT * FROM products WHERE name LIKE '%ayam%' OR description LIKE '%ayam%';
+
+SELECT * FROM products
+WHERE MATCH (name , description) AGAINST ('ayam' IN NATURAL LANGUAGE MODE);
+
+SELECT * FROM products
+WHERE MATCH (name , description) AGAINST ('+mie -bakso' IN BOOLEAN MODE);
+
+SELECT * FROM products
+WHERE MATCH (name , description) AGAINST ('bakso' WITH QUERY EXPANSION);
