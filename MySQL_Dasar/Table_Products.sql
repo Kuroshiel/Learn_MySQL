@@ -5,7 +5,8 @@ CREATE TABLE products(
     price INT UNSIGNED NOT NULL,
     quantity INT UNSIGNED NOT NULL DEFAULT 0,
     create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id).
+    CONSTRAINT price_check CHECK (price >= 1000)
 ) Engine = InnoDB;
 
 SHOW TABLES;
@@ -237,3 +238,29 @@ FROM
     products
 GROUP BY category
 HAVING total > 5;
+
+SELECT * FROM products;
+
+INSERT INTO products (id, name, category, price, quantity)
+VALUES ('P0016', 'Permen', 'Lain-lain', 500, 1000);
+
+UPDATE products
+SET price = 1000
+WHERE id = 'P0016';
+
+ALTER TABLE products
+ADD CONSTRAINT price_check CHECK (price >= 1000);
+
+SHOW CREATE TABLE products;
+
+INSERT INTO products (id, name, category, price, quantity)
+VALUES ('P0017', 'Permen Lagi', 'Lain-lain', 500, 1000);
+
+UPDATE products 
+SET 
+    price = 500
+WHERE
+    id = 'P0016';
+
+ALTER TABLE products
+DROP CONSTRAINT price_check;
