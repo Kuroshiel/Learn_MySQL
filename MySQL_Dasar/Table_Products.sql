@@ -214,3 +214,26 @@ SELECT Min(price) AS 'Harga Termurah' FROM products;
 SELECT AVG(price) AS 'Rata-rata Harga' FROM products;
 
 SELECT SUM(quantity) AS 'Total Stock' FROM products;
+
+SELECT category,
+COUNT(id) AS 'Total Product' 
+FROM products GROUP BY category;
+
+SELECT category, MAX(price) AS 'Harga Termahal'
+FROM products GROUP BY category;
+
+SELECT category, MIN(price) AS 'Harga Termurah'
+FROM products GROUP BY category;
+
+SELECT category, AVG(price) AS 'Rata-rata Harga' 
+FROM products GROUP BY category;
+
+SELECT category, SUM(quantity) AS 'Total Stock' 
+FROM products GROUP BY category;
+
+SELECT 
+    category, COUNT(id) AS total
+FROM
+    products
+GROUP BY category
+HAVING total > 5;
