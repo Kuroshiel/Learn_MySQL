@@ -1,0 +1,51 @@
+START TRANSACTION;
+
+SELECT * FROM guestbook;
+
+UPDATE guestbook
+SET title = 'Diubah oleh user1'
+WHERE id = 19;
+
+COMMIT;
+
+START TRANSACTION;
+
+SELECT * FROM products;
+
+SELECT * FROM products WHERE id = 'P0001' FOR UPDATE;
+
+UPDATE products
+SET quantity = quantity - 10
+WHERE id = 'P0001';
+ 
+ COMMIT;
+ 
+# DEADLOCK
+
+START TRANSACTION;
+
+SELECT * FROM products WHERE id = 'P0001' FOR UPDATE;
+
+SELECT * FROM products WHERE id = 'P0002' FOR UPDATE;
+
+# LOCK TABLE READ
+
+LOCK TABLES products READ;
+
+UPDATE products
+SET quantity = 100
+WHERE id = 'P0001';
+
+UNLOCK TABLES;
+
+# LOCK TABLE WRITE
+
+LOCK TABLES products WRITE;
+
+UNLOCK TABLES;
+
+# LOCK INSTANCE
+
+LOCK INSTANCE FOR BACKUP;
+
+UNLOCK INSTANCE;
