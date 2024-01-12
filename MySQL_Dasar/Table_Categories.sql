@@ -43,3 +43,35 @@ WHERE id IN ('P0010', 'P0011','P0012', 'P0016');
 
 SELECT products.id, products.name, categories.name
 FROM categories JOIN products ON (categories.id = products.id_category);
+
+SELECT * FROM categories;
+
+INSERT INTO categories(id,name) VALUES 
+('C0004', 'Oleh-oleh'),
+('C0005', 'Gadget');
+
+SELECT * FROM categories
+INNER JOIN products ON (products.id_category = categories.id);
+
+SELECT * FROM categories
+LEFT JOIN products ON (products.id_category = categories.id);
+
+SELECT * FROM categories
+RIGHT JOIN products ON (products.id_category = categories.id);
+
+SELECT *FROM categories
+CROSS JOIN products;
+
+CREATE TABLE numbers (
+	id INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+INSERT INTO numbers(id) VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
+
+SELECT * FROM numbers;
+
+SELECT numbers1.id, numbers2.id, (numbers1.id * numbers2.id) AS result
+FROM numbers AS numbers1
+	CROSS JOIN numbers AS numbers2
+ORDER BY numbers1.id, numbers2.id;
